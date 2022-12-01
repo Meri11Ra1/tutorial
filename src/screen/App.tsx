@@ -27,12 +27,21 @@ const Board = () => {
 
   const handleClick = (i: number) => {
     const box = square.slice();
+    if (calculateWinner(box) || box[i]) {
+      return ;
+    }
     box[i] = xIsNext ? 'X' : 'O';
     setSquare(box);
     setXIsNext(!xIsNext);
   }
 
-    const status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    const winner = calculateWinner(square);
+    let status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next Player: ' + (xIsNext ? 'X' : 'O');
+    }
 
     return (
       <div>

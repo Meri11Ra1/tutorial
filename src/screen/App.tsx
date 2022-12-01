@@ -1,18 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { isPropertySignature } from "typescript";
 import './App.css';
 
-const Square = () => {
+const Square = (props: any) => {
       return (
         <button className="square">
-          {/* TODO */}
+          {props.value}
         </button>
       )
   }
   
   const Board = () => {
     const renderSquare = (i: number) =>  {
-      return <Square />;
+      return <Square value={i}/>;
     }
   
       const status = 'Next player: X';

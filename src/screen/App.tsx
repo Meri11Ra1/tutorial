@@ -6,8 +6,11 @@ const Square = (props: any) => {
   const [value, setValue] = useState("");
 
   return (
-    <button className="square" onClick={function() { console.log('click'); }}>
-      {props.value}
+    <button 
+      className="square"
+      onClick={() => setValue('X')}
+    >
+      {value}
     </button>
   )
 }

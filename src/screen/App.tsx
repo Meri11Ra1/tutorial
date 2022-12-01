@@ -1,23 +1,34 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
 import './App.css';
 
 const Square = (props: any) => {
-  const [value, setValue] = useState("");
 
   return (
     <button 
       className="square"
-      onClick={() => setValue('X')}
+      onClick={() => props.onClick()}
     >
-      {value}
+      {props.value}
     </button>
   )
 }
 
 const Board = () => {
+  const [ square, setSquare ] = useState(Array(9).fill(""));
+
   const renderSquare = (i: number) =>  {
-    return <Square value={i}/>;
+    return (
+      <Square 
+        value={square[i]}
+        onClick={() => handleClick(i)}
+      />
+    );
+  }
+
+  const handleClick = (i: number) => {
+    const box = square.slice();
+    box[i] = 'X';
+    setSquare(box);
   }
 
     const status = 'Next player: X';

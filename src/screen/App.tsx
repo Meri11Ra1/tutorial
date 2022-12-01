@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import './App.css';
 
 const Square = (props: any) => {
-
   return (
     <button 
       className="square"
@@ -15,6 +14,7 @@ const Square = (props: any) => {
 
 const Board = () => {
   const [ square, setSquare ] = useState(Array(9).fill(""));
+  const [ xIsNext, setXIsNext ] = useState(true);
 
   const renderSquare = (i: number) =>  {
     return (
@@ -27,11 +27,12 @@ const Board = () => {
 
   const handleClick = (i: number) => {
     const box = square.slice();
-    box[i] = 'X';
+    box[i] = xIsNext ? 'X' : 'O';
     setSquare(box);
+    setXIsNext(!xIsNext);
   }
 
-    const status = 'Next player: X';
+    const status = 'Next player: ' + (xIsNext ? 'X' : 'O');
 
     return (
       <div>

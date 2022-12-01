@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { isPropertySignature } from "typescript";
 import './App.css';
 
 const Square = (props: any) => {
       return (
-        <button className="square">
+        <button className="square" onClick={function() { console.log('click'); }}>
           {props.value}
         </button>
       )
